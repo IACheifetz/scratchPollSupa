@@ -24,3 +24,13 @@ Additional considerations:
   - What needs to live in a persistence layer?
 - Is there some state we need to initialize?
 - Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be resused?)
+
+![wireframe for supabase poll app](/assets/wireframe.png “wireframe for supabase poll app”)
+
+-set up HTML elements for form and input on login page
+-set up HTML for form and input on poll page
+-set up supabase tables to hold past polls for each logged in user
+-import links and key for supabase
+-set up supabase with RLS settings
+-disable email verification requirement in supabase project
+-get app.js set up with functions to refresh elements and eventlisteners for the form and voting buttons
