@@ -1,5 +1,4 @@
 export function renderPoll(poll) {
-    // render and append
     const newPollEl = document.createElement('div');
     const newQuestionEl = document.createElement('p');
     const newOptionOneEl = document.createElement('p');

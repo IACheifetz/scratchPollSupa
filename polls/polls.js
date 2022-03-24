@@ -1,7 +1,6 @@
-import { createPoll, getPolls } from '../fetch-utils.js';
+import { createPoll, getPolls, logOut, redirectIfNotLoggedIn } from '../fetch-utils.js';
 import { renderPoll } from '../render-utils.js';
 
-const currentPollContainerEl = document.querySelector('.current-poll-container');
 const publishButton = document.querySelector('#publish-poll');
 const pastPollsEl = document.querySelector('.past-polls-list');
 const formEl = document.querySelector('form');
@@ -12,12 +11,15 @@ const option1VoteAddButton = document.querySelector('.option-1-add-vote');
 const option1VoteSubtractButton = document.querySelector('.option-1-subtract-vote');
 const option2VoteAddButton = document.querySelector('.option-2-add-vote');
 const option2VoteSubtractButton = document.querySelector('.option-2-subtract-vote');
+const logOutButton = document.querySelector('.logout-button');
 
 let currentPollQuestion = '';
 let currentOption1 = '';
 let currentOption2 = '';
 let currentVote1 = '';
 let currentVote2 = '';
+
+redirectIfNotLoggedIn();
 
 formEl.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -95,3 +97,9 @@ async function fetchAndDisplayPolls() {
         pastPollsEl.append(pollEl);
     }
 }
+
+logOutButton.addEventListener('click', async () => {
+    await logOut();
+
+    window.location.href = '../';
+});

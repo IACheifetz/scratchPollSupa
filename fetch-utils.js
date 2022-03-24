@@ -43,3 +43,14 @@ export function getUser() {
 
     return user;
 }
+
+export async function logOut() {
+    await client.auth.signOut();
+}
+
+export function redirectIfNotLoggedIn() {
+    const user = getUser();
+    if (!user) {
+        window.location.href = '../';
+    }
+}
