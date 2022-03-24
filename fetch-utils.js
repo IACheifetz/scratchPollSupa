@@ -12,7 +12,7 @@ export async function createPoll(somePastPoll) {
     return response.body;    
 }
 
-async function getPolls() {
+export async function getPolls() {
     const response = await client
         .from('past_polls')
         .select('*');

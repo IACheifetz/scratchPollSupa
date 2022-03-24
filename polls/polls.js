@@ -60,7 +60,7 @@ option2VoteSubtractButton.addEventListener('click', () => {
     currentOption2El.textContent = `${currentOption2} (${currentVote2})`;
 });
 
-publishButton.addEventListener('click', () => {
+publishButton.addEventListener('click', async () => {
     const pastPoll = {
         question: currentPollQuestion, 
         option_1: currentOption1, 
@@ -69,7 +69,8 @@ publishButton.addEventListener('click', () => {
         votes_2: currentVote2,
     };
     
-    createPoll(pastPoll);
+    await createPoll(pastPoll);
+    await fetchAndDisplayPolls();
 
     currentPollQuestion = '';
     currentOption1 = '';
@@ -78,6 +79,10 @@ publishButton.addEventListener('click', () => {
     currentVote2 = 0;
 
     displayCurrentPoll();
+});
+
+window.addEventListener('load', async () => {
+    await fetchAndDisplayPolls();
 });
 
 async function fetchAndDisplayPolls() {
