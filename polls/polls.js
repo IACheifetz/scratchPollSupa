@@ -1,3 +1,5 @@
+import { createPoll, getPolls } from '../fetch-utils.js';
+import { renderPoll } from '../render-utils.js';
 
 const currentPollContainerEl = document.querySelector('.current-poll-container');
 const publishButton = document.querySelector('#publish-poll');
@@ -57,3 +59,34 @@ option2VoteSubtractButton.addEventListener('click', () => {
     currentVote2--;
     currentOption2El.textContent = `${currentOption2} (${currentVote2})`;
 });
+
+publishButton.addEventListener('click', () => {
+    const pastPoll = {
+        question: currentPollQuestion, 
+        option_1: currentOption1, 
+        option_2: currentOption2, 
+        votes_1: currentVote1, 
+        votes_2: currentVote2,
+    };
+    
+    createPoll(pastPoll);
+
+    currentPollQuestion = '';
+    currentOption1 = '';
+    currentOption2 = '';
+    currentVote1 = 0;
+    currentVote2 = 0;
+
+    displayCurrentPoll();
+});
+
+async function fetchAndDisplayPolls() {
+    const polls = await getPolls();
+
+    pastPollsEl.textContent = '';
+    for (let poll of polls) {
+        const pollEl = renderPoll(poll);
+
+        pastPollsEl.append(pollEl);
+    }
+}
