@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/home.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <title>Document</title>
 </head>
 
@@ -20,31 +21,37 @@
     </header>
     <main>
         <section class="main-section"> 
-            <div>
                 <form>
                     <label>
                         Question
-                        <input />
+                        <input name="question" />
                     </label>
                     <label>
                         Option 1
-                        <input />
+                        <input name="option-1" />
                     </label>
                     <label>
                         Option 2
-                        <input />
+                        <input name="option-2" />
                     </label>
                     <button>Launch Poll</button>
                 </form>
-            </div>
             <h3>Current Poll:</h3>
             <div class="current-poll-container">
+                <h2 class="current-question-text">Question</h2>
+                    <p class="option-1-text">Option 1</p>
+                    <button class="option-1-add-vote">+</button>
+                    <button class="option-1-subtract-vote">-</button>
 
+                    <p class="option-2-text">Option 2</p>
+                    <button class="option-2-add-vote">+</button>
+                    <button class="option-2-subtract-vote">-</button>
             </div>
             <div>
-                <button>Publish Poll</button>
+                <button id="publish-poll">Publish Poll</button>
             </div>
-            <div>
+            <h3>Past Polls:</h3>
+            <div class="past-polls-list">
                 
             </div>
         </section>
@@ -53,7 +60,7 @@
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
     </footer>
 
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./polls.js"></script>
 </body>
 
 </html>
