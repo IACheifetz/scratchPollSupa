@@ -89,3 +89,7 @@ footer {
     background-color: var(--color3);
     box-shadow: var(--shadow);
 }
+
+label {
+    display: block;
+}
