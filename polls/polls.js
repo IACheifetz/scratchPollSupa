@@ -40,26 +40,28 @@ function displayCurrentPoll() {
     currentQuestionEl.textContent = currentPollQuestion;
     currentOption1El.textContent = currentOption1;
     currentOption2El.textContent = currentOption2;
+    currentOption1El.textContent = `${currentOption1} (${currentVote1})`;
+    currentOption2El.textContent = `${currentOption2} (${currentVote2})`;
 }
 
 option1VoteAddButton.addEventListener('click', () => {
     currentVote1++;
-    currentOption1El.textContent = `${currentOption1} (${currentVote1})`;
+    displayCurrentPoll();
 });
 
 option1VoteSubtractButton.addEventListener('click', () => {
     currentVote1--;
-    currentOption1El.textContent = `${currentOption1} (${currentVote1})`;
+    displayCurrentPoll();
 });
 
 option2VoteAddButton.addEventListener('click', () => {
     currentVote2++;
-    currentOption2El.textContent = `${currentOption2} (${currentVote2})`;
+    displayCurrentPoll();
 });
 
 option2VoteSubtractButton.addEventListener('click', () => {
     currentVote2--;
-    currentOption2El.textContent = `${currentOption2} (${currentVote2})`;
+    displayCurrentPoll();
 });
 
 publishButton.addEventListener('click', async () => {
